@@ -37,7 +37,9 @@ path = os.getcwd() + '/'
 pdb_file = path + sys.argv[1]
 out1_file = path + sys.argv[1].replace('.pdb','.xyz')
 
+# Function call
 coordenates_lines = extract_pdb_structure(pdb_file)
+
 # Writing outputs
 out1_f = open(out1_file, 'w')
 for i in coordenates_lines:

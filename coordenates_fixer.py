@@ -16,11 +16,11 @@ central_point = int(sys.argv[4])
 
 def calculate_WXZ(n, text, p):
 	
-	central_atom_line = text[n].split('    ')
+	central_atom_line = text[n].split(' ')
 	
-	x = central_atom_line[0][2:]
-	y = central_atom_line[1]
-	z = central_atom_line[2]
+	x = central_atom_line[1]
+	y = central_atom_line[2]
+	z = central_atom_line[3]
 
 	W = float(x) - float(p)
 	X = float(y) - float(p)
@@ -55,15 +55,15 @@ X = WXZ[1]
 Z = WXZ[2]
 
 for line in lines[:-1]:
-	line = line.split('    ')
-	atom = line[0][0:1]
-	x = line[0][2:]
-	y = line[1]
-	z = line[2]
+	line = line.split(' ')
+	atom = line[0]
+	x = line[1]
+	y = line[2]
+	z = line[3]
 	
 	new_points = calculate_new_points(x,y,z,W,X,Z)
 
-	out_line = "%1s%s%8f%4s%8f%4s%8f%1s\n" % (atom, ' ', new_points[0],  '  ', new_points[1],  '  ', new_points[2],  '  ' )
+	out_line = "%4s%10s%10s%10s \n" % (atom, new_points[0], new_points[1], new_points[2])
 	out_f.write(out_line)
 
 structure.close()

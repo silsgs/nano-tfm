@@ -18,6 +18,8 @@ def extract_pdb_structure(path_to_a_file):
 			continue
 		elif 'END' in line:
 			continue
+                elif 'CONECT' in line:
+                        continue
 		else:
 			c += 1
 			atom_name = line[13:14].strip(' ')
